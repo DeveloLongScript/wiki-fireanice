@@ -2,7 +2,7 @@ import { InfoIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
-export default function InfoButton({ desc }) {
+export default function InfoButton({ desc }: any) {
   return (
     <>
       <Tooltip>
