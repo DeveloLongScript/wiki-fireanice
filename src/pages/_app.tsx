@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="h-[50px] w-full border-b backdrop-blur fixed z-10 flex items-center">
           <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
           <div className="items-end flex">
-            <span className="font-normal">version 0.1.1</span>
+            <span className="font-normal">version 0.1.3</span>
           </div>
         </div>
         <ResizablePanelGroup direction="horizontal">
