@@ -1,0 +1,52 @@
+{/* DO NOT TOUCH THIS */}
+import Layout from "@/components/MDXLayout"
+
+# Writing on this wiki
+This whole entire wiki, with its code, and just the documents that contain it is put onto GitHub. Along with this all code inside of the docs is built in Markdown, a not so technical format of HTML.
+
+## Freedom of speech model
+If you haven't [seen the paragraph on the main page](/docs#freedom-of-speech-model), this basically says that your personal opinion shouldn't be shown, and rather **an opinion on how the whole server reacted** to the following thing/person.
+
+## Creating a new file
+Starting a new file can be easy, however you need to categorize and make sure the headings are the correct style and have the right functions. To start a file, you need the following things at the top and bottom.<br/><br/>
+**Top**:
+```ts
+{/* DO NOT TOUCH THIS */}
+import Layout from "@/components/MDXLayout"
+```
+**Bottom**:
+```ts
+{/* DO NOT TOUCH THIS */}
+export default ({ children }) => <Layout>{children}</Layout>;
+```
+### Finishing your document
+When finishing your document, you must add it to the appropriate category. If you **don't** know JavaScript, skip this part and tell me in your Pull Request that you didn't add the page to a category. If you do, its quite easy.
+
+Lets say I want to add Classified Resources to Staff Concepts. To do that, I would do the following in `src/allPages.ts`
+```ts
+    {
+       name: "Staff Concepts",
+       pages: [{ name: "Classified Resources", href: "/docs/classified" }],
+    },
+```
+All you have to do, is go to the category, and add a object (`{name: string, href: string}`) with *where the page is* and the *name of the page*.
+
+## Professionalism
+This isn't the wiki to start talking weirdly. We want all players to enjoy the wiki and be able to be comfortable with it, which means I have to employ a way for the **whole wiki to be consistent**.
+
+### Hypercapitalization
+Please Don't Talk Like This. It really irritates me, and I just don't like the way that it looks. <small>I'm talking to you Pari</small>.
+
+### Use appropriate english
+I usually don't have to put this, but its caused me problems in the past, but, please make sure your grammar, and other components of English are correct.
+
+## Swearing
+Since most of the audience on Minehut are 13+, this means this isn't too big of a problem, however being professional also means that you shouldn't be swearing. The only allowed place is in quotes *(however you need to add "\*" to a place in the word)*, however if the word is too severe (n word), just don't include the quote.
+
+## Quoting
+Quoting helps give exact consideration to what your talking about, and so its recommended for events or other things that might useful to the topic.
+
+**So, thats it!**
+
+{/* DO NOT TOUCH THIS */}
+export default ({ children }) => <Layout>{children}</Layout>;
