@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 
-export default function PlayerContents() {
+export default function PlayerContents({ center }: any) {
   const [offline, setOffline] = useState(false);
   const [loading, setLoading] = useState(true);
   const [players, setPlayers] = useState(0);
@@ -26,7 +26,13 @@ export default function PlayerContents() {
 
   if (loading)
     return (
-      <div className="border rounded w-[300px] h-[40px] p-[.1rem] pl-3 flex items-center">
+      <div
+        className={
+          center == true
+            ? ""
+            : "border rounded w-[300px] h-[40px] p-[.1rem] pl-3 flex items-center"
+        }
+      >
         <span className="flex items-center">
           <span className="relative flex h-[.5rem] w-[.5rem]">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 border"></span>
@@ -39,8 +45,14 @@ export default function PlayerContents() {
     );
 
   return (
-    <div className="border rounded w-[300px] h-[40px] p-[.1rem] pl-3 flex items-center">
-      <span className="flex items-center">
+    <div
+      className={
+        center == true
+          ? "w-full"
+          : "border rounded w-[300px] h-[40px] p-[.1rem] pl-3 flex items-center"
+      }
+    >
+      <span className="flex items-center text-center">
         {offline ? (
           <span className="relative flex h-[.5rem] w-[.5rem]">
             <span className="relative inline-flex rounded-full h-[.5rem] w-[.5rem] border"></span>
@@ -52,7 +64,7 @@ export default function PlayerContents() {
           </span>
         )}
 
-        <span className="pl-2">
+        <span className="pl-2 text-center">
           {offline ? (
             "Currently offline"
           ) : (

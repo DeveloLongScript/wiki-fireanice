@@ -17,12 +17,16 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import TextIcon from "@/components/TextIcon";
 import Link from "next/link";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import "@/styles/github-highlight.css";
 import { Button } from "@/components/ui/button";
 import { allPages } from "@/allPages";
 import { SquareArrowOutUpRight } from "lucide-react";
+import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [progress, setProgress] = useState(0);
+  const theme = useTheme();
   const router = useRouter();
 
   useEffect(() => {
@@ -39,92 +43,100 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <TooltipProvider delayDuration={0}>
-      <main className={GeistSans.className + " prose"}>
-        <LoadingBar
-          color="#000000"
-          progress={progress}
-          style={{ height: 3.5 }}
-          onLoaderFinished={() => {
-            setProgress(0);
-          }}
-        />
-        <div className="h-[50px] w-full border-b backdrop-blur fixed z-10 flex items-center">
-          <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
-          <div className="items-end flex">
-            <span className="font-normal">version 0.1.3</span>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <main className={GeistSans.className + " prose dark:prose-invert"}>
+          <LoadingBar
+            color="#000000"
+            progress={progress}
+            style={{ height: 3.5 }}
+            onLoaderFinished={() => {
+              setProgress(0);
+            }}
+          />
+          <div className="h-[50px] w-full border-b backdrop-blur fixed z-10 flex items-center">
+            <ThemeToggle className="m-2" />
+            <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
+            <div className="items-end flex">
+              <span className="font-normal">version 0.3.0</span>
+            </div>
           </div>
-        </div>
-        <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel
-            className="pt-20 pl-10 pr-8 max-md:hidden"
-            minSize={17}
-            maxSize={17}
-          >
-            <ScrollArea
-              className="fixed z-0 overflow-auto mr-30"
-              style={{ height: "calc(100vh - 80px)" }}
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel
+              className="pt-20 pl-10 pr-8 max-md:hidden"
+              minSize={17}
+              maxSize={17}
             >
-              <Link
-                href="/"
-                className={
-                  router.pathname == "/"
-                    ? ""
-                    : "no-underline" + " font-normal hover:font-medium"
-                }
+              <ScrollArea
+                className="fixed z-0 overflow-auto mr-30"
+                style={{ height: "calc(100vh - 80px)" }}
               >
-                Home
-              </Link>
-              <br />
-              <br />
-              {allPages.map((b) => (
-                <>
-                  <strong key={b.name}>{b.name}</strong> <br />
-                  {b.pages.map((p) => (
-                    <>
-                      <Link
-                        key={p.name}
-                        href={p.href}
-                        className={
-                          router.pathname == p.href
-                            ? ""
-                            : "no-underline" +
-                              " font-normal hover:font-medium p-0"
-                        }
-                      >
-                        {p.name}
-                        {"  "}
-                        {p.description && (
-                          <>
-                            <br />
-                            <span className="text-muted-foreground font-nomral hover:font-normal text-sm">
-                              {p.description}
-                            </span>
-                          </>
-                        )}
-                      </Link>
-                      <br />
-                    </>
-                  ))}
-                  <br />
-                </>
-              ))}
-            </ScrollArea>
-          </ResizablePanel>
-          <ResizableHandle />
-          <ResizablePanel>
-            <ScrollArea>
-              <div
-                className="p-20 pl-10 pr-40 z-10"
-                style={{ height: "calc(100vh - 20px)" }}
-              >
-                <Component {...pageProps} />
-              </div>
-            </ScrollArea>
-          </ResizablePanel>
-        </ResizablePanelGroup>
+                <Link
+                  href="/"
+                  className={
+                    router.pathname == "/"
+                      ? ""
+                      : "no-underline" + " font-normal hover:font-medium"
+                  }
+                >
+                  Home
+                </Link>
+                <br />
+                <br />
+                {allPages.map((b) => (
+                  <>
+                    <strong key={b.name}>{b.name}</strong> <br />
+                    {b.pages.map((p) => (
+                      <>
+                        <Link
+                          key={p.name}
+                          href={p.href}
+                          className={
+                            router.pathname == p.href
+                              ? ""
+                              : "no-underline" +
+                                " font-normal hover:font-medium p-0"
+                          }
+                        >
+                          {p.name}
+                          {"  "}
+                          {p.description && (
+                            <>
+                              <br />
+                              <span className="text-muted-foreground font-nomral hover:font-normal text-sm">
+                                {p.description}
+                              </span>
+                            </>
+                          )}
+                        </Link>
+                        <br />
+                      </>
+                    ))}
+                    <br />
+                  </>
+                ))}
+              </ScrollArea>
+            </ResizablePanel>
+            <ResizableHandle />
+            <ResizablePanel>
+              <ScrollArea>
+                <div
+                  className="p-20 pl-10 pr-40 z-10"
+                  style={{ height: "calc(100vh - 20px)" }}
+                >
+                  <Component {...pageProps} />
+                </div>
+              </ScrollArea>
+            </ResizablePanel>
+          </ResizablePanelGroup>
 
-        <Toaster />
-      </main>
+          <Toaster />
+        </main>
+      </ThemeProvider>
     </TooltipProvider>
   );
 }

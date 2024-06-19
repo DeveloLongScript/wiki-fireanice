@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { GeistMono } from "geist/font/mono";
 const convertToSlug = (s: string) => {
   return s
     .trim()
@@ -80,4 +81,8 @@ export function H2(props: any) {
       <hr className="m-0 p-0 pb-4" />
     </>
   );
+}
+
+export function Code(props: any) {
+  return <code {...props} className={GeistMono.className} />;
 }

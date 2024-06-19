@@ -1,9 +1,11 @@
 import withMDX from "@next/mdx";
 import rehypeSlug from "rehype-slug";
+import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 var r = withMDX({
   options: {
-    remarkPlugins: [],
-    rehypePlugins: [rehypeSlug],
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug, rehypeHighlight],
   },
 });
 
