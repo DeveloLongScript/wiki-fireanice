@@ -20,7 +20,18 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import "@/styles/github-highlight.css";
 import { Button } from "@/components/ui/button";
 import { allPages } from "@/allPages";
-import { SquareArrowOutUpRight } from "lucide-react";
+import { Menu, SquareArrowOutUpRight } from "lucide-react";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
 import { ThemeProvider, useTheme } from "next-themes";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -59,10 +70,68 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
           />
           <div className="h-[50px] w-full border-b backdrop-blur fixed z-10 flex items-center">
+            <Drawer>
+              <DrawerTrigger>
+                <Button variant="outline" size="icon" className="m-2 md:hidden">
+                  <Menu />
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent className={GeistSans.className}>
+                <DrawerHeader>
+                  <ScrollArea className="w-[80vh]">
+                    <Link
+                      href="/"
+                      className={
+                        router.pathname == "/"
+                          ? ""
+                          : "no-underline" + " font-normal hover:font-medium"
+                      }
+                    >
+                      Home
+                    </Link>
+                    <br />
+                    <br />
+                    {allPages.map((b) => (
+                      <>
+                        <strong key={b.name}>{b.name}</strong> <br />
+                        {b.pages.map((p) => (
+                          <>
+                            <Link
+                              key={p.name}
+                              href={p.href}
+                              className={
+                                router.pathname == p.href
+                                  ? ""
+                                  : "no-underline" +
+                                    " font-normal hover:font-medium p-0"
+                              }
+                            >
+                              {p.name}
+                              {"  "}
+                              {p.description && (
+                                <>
+                                  <br />
+                                  <span className="text-muted-foreground font-nomral hover:font-normal text-sm">
+                                    {p.description}
+                                  </span>
+                                </>
+                              )}
+                            </Link>
+                            <br />
+                          </>
+                        ))}
+                        <br />
+                      </>
+                    ))}
+                  </ScrollArea>
+                </DrawerHeader>
+              </DrawerContent>
+            </Drawer>
+
             <ThemeToggle className="m-2" />
             <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
             <div className="items-end flex">
-              <span className="font-normal">version 0.3.0</span>
+              <span className="font-normal">version 0.4.0</span>
             </div>
           </div>
           <ResizablePanelGroup direction="horizontal">
