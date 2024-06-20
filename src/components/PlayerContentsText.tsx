@@ -62,7 +62,9 @@ export default function PlayerContents({ center }: any) {
       <div className="pl-3">
         <Button
           variant="ghost"
-          className={"w-[60px] h-[30px] inline-flex z-10 relative"}
+          className={
+            "w-[60px] h-[30px] inline-flex z-10 relative max-lg:hidden"
+          }
           onClick={() => {
             navigator.clipboard.writeText("FireAnIceBox.minehut.gg");
             toast("Copied to clipboard");

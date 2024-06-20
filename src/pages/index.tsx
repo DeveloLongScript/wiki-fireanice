@@ -25,7 +25,7 @@ export default function Index() {
           whole documentation is fully open source on GitHub.
           <br />
           <br />
-          <div>
+          <div className="max-lg:hidden">
             <Link href="/docs" className="z-10 relative">
               <Button>Go to wiki home</Button>
             </Link>
@@ -36,8 +36,10 @@ export default function Index() {
           </div>
           <br />
           <PlayerContents center={true} /> <br /> <br />
-          Thank you. <br />
-          <strong>by Giftedly</strong>
+          <div className="max-lg:hidden">
+            Thank you. <br />
+            <strong>by Giftedly</strong>
+          </div>
         </div>
       </BackgroundGradientAnimation>
     </main>
