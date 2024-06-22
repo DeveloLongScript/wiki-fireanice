@@ -17,6 +17,7 @@ export const allPages = [
     pages: [
       { name: "Wood Mine", href: "/docs/mines/wood" },
       { name: "Stone Mine", href: "/docs/mines/stone" },
+      { name: "Coal Mine", href: "/docs/mines/coal" },
     ],
   },
   {
