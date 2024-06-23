@@ -12,7 +12,7 @@ var r = withMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["geist"],
+  transpilePackages: ["geist", "@mui/x-charts"],
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 };
 

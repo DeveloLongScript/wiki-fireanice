@@ -12,7 +12,7 @@ export default function InfoButton({ desc, touch }: any) {
           </Button>
         </TooltipTrigger>
         {touch ? (
-          <TooltipContent side="left" sideOffset={-60}>
+          <TooltipContent side="left" sideOffset={-60} className="font-normal">
             {desc}
           </TooltipContent>
         ) : (

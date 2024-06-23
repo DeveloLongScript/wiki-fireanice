@@ -153,7 +153,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <ThemeToggle className="m-2" />
             <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
             <div className="items-end flex">
-              <span className="font-normal max-lg:hidden">version 0.6.0</span>
+              <span className="font-normal max-lg:hidden">version 0.7.0</span>
             </div>
           </div>
           <ResizablePanelGroup direction="horizontal">
