@@ -20,7 +20,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import "@/styles/github-highlight.css";
 import { Button } from "@/components/ui/button";
 import { allPages } from "@/allPages";
-import { Menu, SquareArrowOutUpRight } from "lucide-react";
+import { ChevronDown, Menu, SquareArrowOutUpRight, Vote } from "lucide-react";
 import {
   Drawer,
   DrawerClose,
@@ -31,11 +31,17 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
+import type { Metadata } from "next";
+import FadeIn from "react-fade-in";
+import { motion } from "framer-motion";
 import { ThemeProvider, useTheme } from "next-themes";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import * as React from "react";
 import type { SVGProps } from "react";
+import { MobileView } from "react-device-detect";
+import Layout from "@/components/MDXLayout";
+import { Separator } from "@/components/ui/separator";
+import InfoButton from "@/components/InfoButton";
 const Github = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 256 250"
@@ -53,6 +59,7 @@ const Github = (props: SVGProps<SVGSVGElement>) => (
 export default function App({ Component, pageProps }: AppProps) {
   const [progress, setProgress] = useState(0);
   const theme = useTheme();
+  const [mobile, setMobile] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -85,76 +92,68 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
           />
           <div className="h-[50px] w-full border-b backdrop-blur fixed z-10 flex items-center">
-            <Drawer>
-              <DrawerTrigger>
-                <Button variant="outline" size="icon" className="m-2 md:hidden">
-                  <Menu />
-                </Button>
-              </DrawerTrigger>
-              <Link
-                href="https://github.com/DeveloLongScript/wiki-fireanice"
-                className="max-md:hidden"
+            <Link href="https://github.com/DeveloLongScript/wiki-fireanice">
+              <Button
+                size="icon"
+                variant="outline"
+                className="m-2 max-md:hidden"
               >
-                <Button variant="outline" size="icon" className="m-2">
-                  <Github />
-                </Button>
-              </Link>
-              <DrawerContent className={GeistSans.className}>
-                <DrawerHeader>
-                  <ScrollArea className="h-[80vh] ">
-                    <Link
-                      href="/"
-                      className={
-                        router.pathname == "/"
-                          ? ""
-                          : "no-underline" + " font-normal hover:font-medium"
-                      }
-                    >
-                      Home
-                    </Link>
-                    <br />
-                    <br />
-                    {allPages.map((b) => (
-                      <>
-                        <strong key={b.name}>{b.name}</strong> <br />
-                        {b.pages.map((p) => (
-                          <>
-                            <Link
-                              key={p.name}
-                              href={p.href}
-                              className={
-                                router.pathname == p.href
-                                  ? ""
-                                  : "no-underline" +
-                                    " font-normal hover:font-medium p-0"
-                              }
-                            >
-                              {p.name}
-                              {"  "}
-                              {p.description && (
-                                <>
-                                  <br />
-                                  <span className="text-muted-foreground font-nomral hover:font-normal text-sm">
-                                    {p.description}
-                                  </span>
-                                </>
-                              )}
-                            </Link>
-                            <br />
-                          </>
-                        ))}
-                        <br />
-                      </>
-                    ))}
-                  </ScrollArea>
-                </DrawerHeader>
-              </DrawerContent>
-            </Drawer>
+                <Github />
+              </Button>
+            </Link>
+            <MobileView>
+              <Button
+                variant="outline"
+                size="icon"
+                className="m-2 md:hidden"
+                onClick={() => setMobile(true)}
+              >
+                <Menu />
+              </Button>
+              <Drawer open={mobile} onOpenChange={setMobile}>
+                <DrawerContent className={GeistSans.className}>
+                  <DrawerHeader>
+                    <ScrollArea className="h-[80vh] text-left">
+                      <Link
+                        href="/"
+                        className={
+                          router.pathname == "/"
+                            ? ""
+                            : "no-underline" + " font-normal hover:font-medium"
+                        }
+                      >
+                        Home
+                      </Link>
+                      <br />
+                      <Link href="https://github.com/DeveloLongScript/wiki-fireanice">
+                        GitHub
+                      </Link>
+                      <br />
+                      <br />
+
+                      {allPages.map((b: any) => (
+                        <>
+                          <strong key={b.name}>{b.name}</strong> <br />
+                          {b.pages.map((l: any) => (
+                            <SideButton
+                              p={l}
+                              key={l.name}
+                              click={() => setMobile(false)}
+                            />
+                          ))}
+                          <br />
+                        </>
+                      ))}
+                    </ScrollArea>
+                  </DrawerHeader>
+                </DrawerContent>
+              </Drawer>
+            </MobileView>
 
             <ThemeToggle className="m-2" />
             <strong className="text-2xl p-4">FireAnIceBox Wiki</strong>
             <div className="items-end flex">
-              <span className="font-normal max-lg:hidden">version 0.5.1</span>
+              <span className="font-normal max-lg:hidden">version 0.6.0</span>
             </div>
           </div>
           <ResizablePanelGroup direction="horizontal">
@@ -167,62 +166,47 @@ export default function App({ Component, pageProps }: AppProps) {
                 className="fixed z-0 overflow-auto mr-30"
                 style={{ height: "calc(100vh - 80px)" }}
               >
-                <Link
-                  href="/"
-                  className={
-                    router.pathname == "/"
-                      ? ""
-                      : "no-underline" + " font-normal hover:font-medium"
-                  }
-                >
-                  Home
-                </Link>
+                <FadeIn>
+                  <Link
+                    href="/"
+                    className={
+                      router.pathname == "/"
+                        ? ""
+                        : "no-underline" + " font-normal hover:font-medium"
+                    }
+                  >
+                    Home
+                  </Link>
+                </FadeIn>
                 <br />
-                <br />
-                {allPages.map((b) => (
-                  <>
-                    <strong key={b.name}>{b.name}</strong> <br />
-                    {b.pages.map((p) => (
-                      <>
-                        <Link
-                          key={p.name}
-                          href={p.href}
-                          className={
-                            router.pathname == p.href
-                              ? ""
-                              : "no-underline" +
-                                " font-normal hover:font-medium p-0"
-                          }
-                        >
-                          {p.name}
-                          {"  "}
-                          {p.description && (
-                            <>
-                              <br />
-                              <span className="text-muted-foreground font-nomral hover:font-normal text-sm">
-                                {p.description}
-                              </span>
-                            </>
-                          )}
-                        </Link>
-                        <br />
-                      </>
-                    ))}
-                    <br />
-                  </>
-                ))}
+                <FadeIn>
+                  {allPages.map((b: any) => (
+                    <>
+                      <strong key={b.name}>{b.name}</strong> <br />
+                      <Separator className="mb-2" />
+                      {b.pages.map((p: any) => (
+                        <SideButton key={p.name} p={p} />
+                      ))}
+                      <br />
+                    </>
+                  ))}
+                </FadeIn>
               </ScrollArea>
             </ResizablePanel>
             <ResizableHandle />
             <ResizablePanel>
-              <ScrollArea>
-                <div
-                  className="p-20 pl-10 pr-40 z-10"
-                  style={{ height: "calc(100vh - 20px)" }}
-                >
-                  <Component {...pageProps} />
-                </div>
-              </ScrollArea>
+              <Layout>
+                <ScrollArea>
+                  <div
+                    className="pt-20 pl-10 md:pr-40 max-md:pr-10 z-10 max-md:w-[90%]"
+                    style={{ height: "calc(100vh - 20px)" }}
+                  >
+                    <FadeIn>
+                      <Component {...pageProps} />
+                    </FadeIn>
+                  </div>
+                </ScrollArea>
+              </Layout>
             </ResizablePanel>
           </ResizablePanelGroup>
 
@@ -230,5 +214,82 @@ export default function App({ Component, pageProps }: AppProps) {
         </main>
       </ThemeProvider>
     </TooltipProvider>
+  );
+}
+
+function SideButton({ p, click }: any) {
+  const [dropdown, setDropDown] = useState(false);
+  const router = useRouter();
+
+  const rotate = dropdown ? "rotate(-90deg)" : "rotate(0)";
+  return (
+    <>
+      <span className="flex items-center">
+        {p.dropdown != undefined && (
+          <>
+            <Button
+              size="icon"
+              className="w-[18px] h-[18px] mr-2"
+              variant="ghost"
+              onClick={() => {
+                setDropDown(!dropdown);
+              }}
+            >
+              <ChevronDown
+                size={16}
+                style={{ transform: rotate, transition: "all 0.1s linear" }}
+              />
+            </Button>
+          </>
+        )}
+        <Link
+          href={p.href}
+          onClick={click}
+          className={
+            router.pathname == p.href
+              ? ""
+              : "no-underline" + " font-normal hover:font-medium p-0"
+          }
+        >
+          {p.name}
+          {p.description != undefined && (
+            <>
+              <br />
+              <span className="text-muted-foreground">{p.description}</span>
+            </>
+          )}
+        </Link>
+        <br />
+      </span>
+      {dropdown && (
+        <FadeIn>
+          {p.dropdown.map((v: any) => (
+            <>
+              <Link
+                href={v.href}
+                key={v.name}
+                onClick={click}
+                className={
+                  router.pathname == v.href
+                    ? "ml-7"
+                    : "ml-7 no-underline font-normal hover:font-medium p-0"
+                }
+              >
+                {v.name}
+                {v.description != undefined && (
+                  <>
+                    <br />
+                    <span className="text-muted-foreground">
+                      {v.description}
+                    </span>
+                  </>
+                )}
+              </Link>
+              <br />
+            </>
+          ))}
+        </FadeIn>
+      )}
+    </>
   );
 }

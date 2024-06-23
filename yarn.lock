@@ -666,6 +666,13 @@
     "@radix-ui/react-use-callback-ref" "1.0.1"
     "@radix-ui/react-use-layout-effect" "1.0.1"
 
+"@radix-ui/react-separator@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.1.0.tgz#ee0f4d86003b0e3ea7bc6ccab01ea0adee32663e"
+  integrity sha512-3uBAs+egzvJBDZAzvb/n4NxxOYpnspmWxO2u5NbZ8Y6FM/NdrGSF9bop3Cf6F6C71z1rTSn8KV0Fo2ZVd79lGA==
+  dependencies:
+    "@radix-ui/react-primitive" "2.0.0"
+
 "@radix-ui/react-slot@1.0.2", "@radix-ui/react-slot@^1.0.2":
   version "1.0.2"
   resolved "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.0.2.tgz"
@@ -3802,6 +3809,13 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-device-detect@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.2.3.tgz#97a7ae767cdd004e7c3578260f48cf70c036e7ca"
+  integrity sha512-buYY3qrCnQVlIFHrC5UcUoAj7iANs/+srdkwsnNjI7anr3Tt7UY6MqNxtMLlr0tMBied0O49UZVK8XKs3ZIiPw==
+  dependencies:
+    ua-parser-js "^1.0.33"
+
 react-dom@^18:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
@@ -3809,6 +3823,11 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
+
+react-fade-in@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-2.0.1.tgz#b4bcd7dac63d6857ebcd68facbff2f5f9616278f"
+  integrity sha512-oqS/WT4znaXEHmL+yo0IDUDY7uC9K4RP35j1SdRUEBspR09B2iIC0i8oJ28tPOr6Ez/L2aktF9p89j+DbsTVNw==
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -4498,6 +4517,11 @@ typescript@^5:
   version "5.4.5"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.4.5.tgz"
   integrity sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==
+
+ua-parser-js@^1.0.33:
+  version "1.0.38"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.38.tgz#66bb0c4c0e322fe48edfe6d446df6042e62f25e2"
+  integrity sha512-Aq5ppTOfvrCMgAPneW1HfWj66Xi7XL+/mIy996R1/CLS/rcyJQm6QZdsKrUeivDFQ+Oc9Wyuwor8Ze8peEoUoQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

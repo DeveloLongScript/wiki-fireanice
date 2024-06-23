@@ -1,4 +1,4 @@
-export const allPages = [
+export const allPages: any = [
   {
     name: "Introduction",
     pages: [
@@ -13,11 +13,17 @@ export const allPages = [
     ],
   },
   {
-    name: "Spawn Mines",
+    name: "Mines",
     pages: [
-      { name: "Wood Mine", href: "/docs/mines/wood" },
-      { name: "Stone Mine", href: "/docs/mines/stone" },
-      { name: "Coal Mine", href: "/docs/mines/coal" },
+      {
+        name: "Spawn World",
+        href: "/docs/worlds/spawn",
+        dropdown: [
+          { name: "Wood Mine", href: "/docs/mines/wood" },
+          { name: "Stone Mine", href: "/docs/mines/stone" },
+          { name: "Coal Mine", href: "/docs/mines/coal" },
+        ],
+      },
     ],
   },
   {
@@ -32,7 +38,7 @@ export const allPages = [
       {
         name: "Join Offical Box Discord",
         href: "https://discord.gg/HrbY4qkMRE",
-        description: "The community of FireAnIceBox",
+        description: "Talk to the community of FireAnIce",
       },
       {
         name: "Join Wiki Discord",

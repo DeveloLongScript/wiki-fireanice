@@ -4,6 +4,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { GeistMono } from "geist/font/mono";
+import { interFont } from "@/lib/interFont";
 const convertToSlug = (s: string) => {
   return s
     .trim()
@@ -22,7 +23,7 @@ export function H1(props: any) {
   return (
     <>
       <div className="inline-flex group">
-        <h1 {...props} className="m-0 p-0 pb-2" />
+        <h1 {...props} className={"m-0 p-0 pb-2 " + interFont} />
         <Tooltip>
           <TooltipTrigger>
             <Button

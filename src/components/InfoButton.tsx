@@ -2,7 +2,7 @@ import { InfoIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
-export default function InfoButton({ desc }: any) {
+export default function InfoButton({ desc, touch }: any) {
   return (
     <>
       <Tooltip>
@@ -11,7 +11,13 @@ export default function InfoButton({ desc }: any) {
             <InfoIcon size={16} />{" "}
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{desc}</TooltipContent>
+        {touch ? (
+          <TooltipContent side="left" sideOffset={-60}>
+            {desc}
+          </TooltipContent>
+        ) : (
+          <TooltipContent>{desc}</TooltipContent>
+        )}
       </Tooltip>
     </>
   );

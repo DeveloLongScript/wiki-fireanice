@@ -2,6 +2,8 @@ import { MDXProvider } from "@mdx-js/react";
 import { H1, H2, Code } from "./Headers";
 import TextIcon from "./TextIcon";
 import InfoButton from "./InfoButton";
+import Alert from "./Alert";
+import { GlareCard } from "./GlareCard";
 
 import { useState, useEffect } from "react";
 
@@ -18,7 +20,15 @@ export default function Layout({ children, ...props }: LayoutProps) {
   return (
     mounted && (
       <MDXProvider
-        components={{ h1: H1, h2: H2, code: Code, TextIcon, InfoButton }}
+        components={{
+          h1: H1,
+          h2: H2,
+          code: Code,
+          TextIcon,
+          InfoButton,
+          Alert,
+          GlareCard,
+        }}
       >
         {children}
       </MDXProvider>
