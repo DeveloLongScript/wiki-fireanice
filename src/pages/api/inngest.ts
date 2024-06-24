@@ -74,14 +74,14 @@ export default serve({
             (
               await fetch("https://api.minehut.com/servers", {
                 headers: {
-                  accept: "application/json",
-                  Referer: "https://app.minehut.com/",
+                  accept: "application/json,text/*;q=0.99",
                   "Referrer-Policy": "strict-origin-when-cross-origin",
                   "User-Agent":
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
                 },
                 mode: "cors",
                 method: "GET",
+                body: null,
               })
             ).text(),
           );
