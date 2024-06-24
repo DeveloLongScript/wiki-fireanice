@@ -73,15 +73,7 @@ export default serve({
           const mhServers = await (
             await fetch("https://api.minehut.com/servers", {
               headers: {
-                accept: "application/json, text/plain, */*",
-                "accept-language": "en-US,en;q=0.9",
-                priority: "u=1, i",
-                "sec-ch-ua": '"Not/A)Brand";v="8", "Chromium";v="126"',
-                "sec-ch-ua-mobile": "?0",
-                "sec-ch-ua-platform": '"macOS"',
-                "sec-fetch-dest": "empty",
-                "sec-fetch-mode": "cors",
-                "sec-fetch-site": "same-site",
+                accept: "application/json",
                 Referer: "https://app.minehut.com/",
                 "Referrer-Policy": "strict-origin-when-cross-origin",
               },
