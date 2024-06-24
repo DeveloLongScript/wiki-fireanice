@@ -69,7 +69,18 @@ export default serve({
             "/" +
             new Date().getFullYear();
           const collection = serverDB.collection(today);
-
+          console.log(
+            await (
+              await fetch("https://api.minehut.com/servers", {
+                headers: {
+                  accept: "application/json",
+                  Referer: "https://app.minehut.com/",
+                  "Referrer-Policy": "strict-origin-when-cross-origin",
+                },
+                method: "GET",
+              })
+            ).text(),
+          );
           const mhServers = await (
             await fetch("https://api.minehut.com/servers", {
               headers: {
