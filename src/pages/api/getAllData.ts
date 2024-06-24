@@ -11,9 +11,6 @@ export default async function GET(req: NextApiRequest, res: NextApiResponse) {
   console.log(client);
   if (client != undefined) {
     await client.connect();
-    client.on("connection", () => {
-      console.log("Connected");
-    });
     const db = client.db("snapshots");
     const date =
       new Date().getDate() +
