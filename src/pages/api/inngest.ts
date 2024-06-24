@@ -85,16 +85,22 @@ export default serve({
               })
             ).text(),
           );
-          const mhServers = await (
-            await fetch("https://api.minehut.com/servers", {
-              headers: {
-                accept: "application/json",
-                Referer: "https://app.minehut.com/",
-                "Referrer-Policy": "strict-origin-when-cross-origin",
-              },
-              method: "GET",
-            })
-          ).json();
+          var mhServers: any = undefined;
+          try {
+            mhServers = await (
+              await fetch("https://api.minehut.com/servers", {
+                headers: {
+                  accept: "application/json",
+                  Referer: "https://app.minehut.com/",
+                  "Referrer-Policy": "strict-origin-when-cross-origin",
+                },
+                method: "GET",
+              })
+            ).json();
+          } catch {
+            return { event, body: "Cloudflare bot popup. Aborting." };
+          }
+
           var found = false;
           mhServers.servers.forEach((server: any, i: number) => {
             if (server.name == "FireAnIceBox") {
