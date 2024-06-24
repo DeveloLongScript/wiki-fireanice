@@ -8,8 +8,12 @@ if (process.env.MONGODB_URI != undefined)
 export default async function GET(req: NextApiRequest, res: NextApiResponse) {
   var todayData: any[] = [];
   var avg: any[] = [];
+  console.log(client);
   if (client != undefined) {
     await client.connect();
+    client.on("connection", () => {
+      console.log("Connected");
+    });
     const db = client.db("snapshots");
     const date =
       new Date().getDate() +
