@@ -70,12 +70,15 @@ export default serve({
             new Date().getFullYear();
           const collection = serverDB.collection(today);
           console.log(
-            await (
+            await // a custom user agent is needed so cloudflare doesn't yap
+            (
               await fetch("https://api.minehut.com/servers", {
                 headers: {
                   accept: "application/json",
                   Referer: "https://app.minehut.com/",
                   "Referrer-Policy": "strict-origin-when-cross-origin",
+                  "User-Agent":
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
                 },
                 method: "GET",
               })
